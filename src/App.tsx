@@ -1,11 +1,13 @@
-import Profile from "./pages/user/UserDashBoard";
-
+import Profile from "./pages/user/profile";
+import { BrowserRouter } from "react-router-dom";
 type Props = {};
 
 const App = (props: Props) => {
   return (
     <div>
-      <Profile />
+      <BrowserRouter>
+        <Profile />
+      </BrowserRouter>
     </div>
   );
 };

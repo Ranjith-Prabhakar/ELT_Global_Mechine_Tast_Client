@@ -53,11 +53,14 @@ export default {
 					'4': 'hsl(var(--chart-4))',
 					'5': 'hsl(var(--chart-5))'
 				}
-				, ETLBackground: "#F6F6F7"
+				, ETLBackground: "#F6F6F7" 
 			},
 			fontFamily: {
 				baloo: ['"Baloo 2"', 'cursive'],
 				inter: ['"Inter"', 'sans-serif']
+			},
+			boxShadow: {
+				'custom': '0px 1px 4px 0px #F3F3F3',
 			},
 		}
 	},

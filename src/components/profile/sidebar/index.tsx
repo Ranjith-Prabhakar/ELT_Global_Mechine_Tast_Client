@@ -1,6 +1,6 @@
-import Menu from "./Menu";
-import Logo from "./Logo";
-import ProfileData from "./ProfileData";
+import Menu from "./Menu.js";
+import Logo from "./Logo.js";
+import ProfileData from "./ProfileData.js";
 import data from "../../../assets/Profile/SideBar/data/student.js";
 type Props = {};
 
