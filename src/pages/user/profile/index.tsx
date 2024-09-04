@@ -1,18 +1,23 @@
-import ContentArea from "@/components/profile/contentArea";
-import ProfileBoardSideBar from "@/components/profile/sidebar";
-import { TUser } from "../../../redux/features/user/userSlice";
-import { useSelector } from "react-redux";
+import Login from "../../../pages/auth/Login/Login";
+import useGetUser from "../../../hooks/useGetUser";
+import InstructorProfile from "./InstructorProfile";
+import UserProfile from "./UserProfile";
 
 type Props = {};
 
 const Profile = (props: Props) => {
-  let user = useSelector((state: { user: TUser }) => state.user);
+  let user = useGetUser();
   console.log("userrrrrr", user);
   return (
-    <div className="bg-ETLBackground max-h-auto max-w-[100vw] flex">
-      <ProfileBoardSideBar />
-      <ContentArea />
-    </div>
+    <>
+      {user.selectedRole === "user" ? (
+        <UserProfile />
+      ) : user.selectedRole === "instructor" ? (
+        <InstructorProfile />
+      ) : (
+        <Login />
+      )}
+    </>
   );
 };
 
