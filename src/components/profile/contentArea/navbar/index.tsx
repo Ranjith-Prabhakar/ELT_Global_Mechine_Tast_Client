@@ -5,7 +5,6 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   const { head } = useUserMenuSelectContext();
-  console.log("head",head)
   return (
     <div className="w-[1128.5px] h-[130px] bg-[#FFFFFF]">
       <div className="h-[70px] p-[24px]">

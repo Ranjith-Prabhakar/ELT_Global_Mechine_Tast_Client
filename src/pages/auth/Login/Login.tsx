@@ -11,7 +11,6 @@ type Props = {};
 
 const Login = (props: Props) => {
   const user = useGetUser();
-  console.log("user Login", user);
   const navigate = useNavigate();
   useEffect(() => {
     if (user.name) {
@@ -54,8 +53,8 @@ const Login = (props: Props) => {
               variant={"auth"}
               onClick={async () => {
                 let result = await validation({ email, password });
-                console.log("response", result);
                 if (result) {
+                  
                   dispatch(loadUser({ payload: result }));
                   navigate("/profile");
                 }

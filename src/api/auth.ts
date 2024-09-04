@@ -33,8 +33,6 @@ export async function login({ email, password }: TSingin) {
       email,
       password,
     });
-    console.log("result******************", result.data.user);
-    console.log("result dataaaa******************", result.data);
     if (result.data.status === 200) {
       localStorage.setItem("ELTToken",result.data.token);
       localStorage.setItem("ELTUser", JSON.stringify(result.data.user));

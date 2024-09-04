@@ -1,6 +1,8 @@
 import profImage from "../../../../../../assets/Profile/SideBar/images/profileImage.jpeg";
 import { Button } from "../../../../../ui/button";
 import { fetchEvents } from "@/api/user";
+import { useDispatch, useSelector } from "react-redux";
+import { TUser } from "@/redux/features/user/userSlice";
 import {
   Table,
   TableBody,
@@ -11,65 +13,7 @@ import {
 } from "../../../../../ui/table";
 import { useEffect, useState } from "react";
 import { formatEventDate } from "./utils/formatEventDate";
-
-const invoices = [
-  {
-    courseName: "ui/ux",
-    date: "03/09/2024",
-    time: "6pm",
-    profImage: profImage,
-    instructorName: "Paid",
-    details: "additional details",
-  },
-  {
-    courseName: "ui/ux",
-    date: "03/09/2024",
-    time: "6pm",
-    profImage: profImage,
-    instructorName: "Paid",
-    details: "additional details",
-  },
-  {
-    courseName: "ui/ux",
-    date: "03/09/2024",
-    time: "6pm",
-    profImage: profImage,
-    instructorName: "Paid",
-    details: "additional details",
-  },
-  {
-    courseName: "ui/ux",
-    date: "03/09/2024",
-    time: "6pm",
-    profImage: profImage,
-    instructorName: "Paid",
-    details: "additional details",
-  },
-  {
-    courseName: "ui/ux",
-    date: "03/09/2024",
-    time: "6pm",
-    profImage: profImage,
-    instructorName: "Paid",
-    details: "additional details",
-  },
-  {
-    courseName: "ui/ux",
-    date: "03/09/2024",
-    time: "6pm",
-    profImage: profImage,
-    instructorName: "Paid",
-    details: "additional details",
-  },
-  {
-    courseName: "ui/ux",
-    date: "03/09/2024",
-    time: "6pm",
-    profImage: profImage,
-    instructorName: "Paid",
-    details: "additional details",
-  },
-];
+import Modal from "./Modal";
 
 type TEvents = [
   {
@@ -88,7 +32,11 @@ type TEvents = [
 ];
 const TableComponent = () => {
   const [events, setEvents] = useState<TEvents>();
-
+  const [modal, setModal] = useState(false);
+  const [userId,setUserId]= useState("");
+  const dispatch = useDispatch();
+  const state = useSelector((state: { user: TUser }) => state.user);
+  console.log("state", state);
   useEffect(() => {
     async function fetchCall() {
       let fetch = (await fetchEvents({})) as unknown as TEvents;
@@ -98,9 +46,6 @@ const TableComponent = () => {
     fetchCall();
   }, []);
 
-  useEffect(() => {
-    console.log("TableComp", events);
-  }, [events]);
   return (
     <>
       {events ? (
@@ -126,7 +71,7 @@ const TableComponent = () => {
           </TableHeader>
           <TableBody>
             {events.map((events, index) => (
-              <TableRow key={events.instructor?.name}>
+              <TableRow key={events.instructor?.name + "" + index}>
                 <TableCell className="w-[208px] h-[70px] border-b-[1px] border-t-0 border-[#E2E2E2] ps-[24px]">
                   <div className="flex items-center gap-3 w-full ">
                     <div className="">
@@ -171,15 +116,38 @@ const TableComponent = () => {
                   </div>
                 </TableCell>
                 <TableCell>
-                  <Button>
-                    <h5 className="inter font-[600px] text-[14px] leading-[20px] text-[#222124]">
-                      Book now
-                    </h5>
-                  </Button>
+                  {!state.bookedEvents?.includes(events?._id as string) ? (
+                    <Button
+                      onClick={() => {
+                        setUserId(events._id as string);
+                        setModal(!modal)
+                      }}
+                      // onClick={async () => {
+                      //   let response = await addBookedEvents(
+                      //     events._id as string
+                      //   );
+                      //   if (response?.data.status === 201) {
+                      //     toast.success(response.data.message);
+                      //     dispatch(loadUser({ payload: response.data.data }));
+                      //   }
+                      // }}
+                    >
+                      <h5 className="inter font-[600px] text-[14px] leading-[20px] text-[#222124]">
+                        Book now
+                      </h5>
+                    </Button>
+                  ) : (
+                    <Button disabled>
+                      <h5 className="inter font-[600px] text-[14px] leading-[20px] text-[#222124]">
+                        Book now
+                      </h5>
+                    </Button>
+                  )}
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
+          {modal && <Modal setModal={setModal} userId={userId}/>}
         </Table>
       ) : (
         <div>Loading....</div>
