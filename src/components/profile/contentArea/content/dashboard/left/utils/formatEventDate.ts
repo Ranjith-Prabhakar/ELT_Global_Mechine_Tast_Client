@@ -8,6 +8,10 @@ export const formatEventDate = function (eventDate: string) {
   } else if (isPast(date)) {
     return "Live";
   } else {
-    return `${format(date, "do MMMM p")}`; // "21st June 10:00 AM"
+    const formattedDate = format(date, "do MMMM p"); // "21st June 10:00 AM"
+    const parts = formattedDate.split(" ");
+    const month = parts[1].substring(0, 4); // Get the first 4 letters of the month
+    parts[1] = month;
+    return parts.join(" "); // "21st June 10:00 AM"
   }
 };

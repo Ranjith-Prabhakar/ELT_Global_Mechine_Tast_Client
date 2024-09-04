@@ -107,7 +107,7 @@ const TableComponent = () => {
         <Table className="bg-[#fff]">
           <TableHeader>
             <TableRow className="bg-[#F6F6F6] border-b-0">
-              <TableHead className="w-[208px] h-[40px] px-[24px]">
+              <TableHead className="w-[208px] h-[40px] px-[24px] ">
                 <h1 className="inter w-[64px] h-[18px] font-[500] text-[12px] leading-[18px] text-[#5F5F61]">
                   Class name
                 </h1>
@@ -127,16 +127,16 @@ const TableComponent = () => {
           <TableBody>
             {events.map((events, index) => (
               <TableRow key={events.instructor?.name}>
-                <TableCell className="w-[208px] h-[70px] border-b-[1px] border-t-0 border-[#E2E2E2] px-[24px]">
-                  <div className="flex items-center gap-3">
-                    <div className="h-[20px] w-[20px]">
-                      <p className="w-[16px] h-[18px] font-[500] text-[14px] inter leading-[20px] text-center text-[#A1A0A3]">
+                <TableCell className="w-[208px] h-[70px] border-b-[1px] border-t-0 border-[#E2E2E2] ps-[24px]">
+                  <div className="flex items-center gap-3 w-full ">
+                    <div className="">
+                      <p className="font-[500] text-[14px] inter leading-[20px] text-center text-[#A1A0A3]">
                         {index + 1}
                       </p>
                     </div>
                     <div className="flex flex-col h-[40px] ">
                       <div>
-                        <h6 className="inter font-[600] text-[14px] leading-[20px] text-[#222124]">
+                        <h6 className="inter font-[600] text-[14px] leading-[20px] text-[#222124] whitespace-nowrap">
                           {events.courseName}
                         </h6>
                       </div>
