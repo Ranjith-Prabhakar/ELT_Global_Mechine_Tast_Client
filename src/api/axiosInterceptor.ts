@@ -11,7 +11,7 @@ axiosInstance.interceptors.request.use(
   (config) => {
     // Retrieve the token from localStorage
     let token = localStorage.getItem("ELTToken");
-
+    
     if (token) {
       // If the token exists, add it to the headers
       config.headers["Authorization"] = `Bearer ${token}`;

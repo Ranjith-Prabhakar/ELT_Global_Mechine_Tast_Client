@@ -7,7 +7,7 @@ type Props = {};
 
 const Profile = (props: Props) => {
   let user = useGetUser();
-  console.log("userrrrrr", user);
+  
   return (
     <>
       {user.selectedRole === "user" ? (
