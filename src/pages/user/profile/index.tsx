@@ -5,7 +5,7 @@ type Props = {};
 
 const Profile = (props: Props) => {
   return (
-    <div className="bg-ETLBackground max-h-[100vh] max-w-[100vw] flex">
+    <div className="bg-ETLBackground max-h-auto max-w-[100vw] flex">
       <ProfileBoardSideBar />
       <ContentArea />
     </div>
