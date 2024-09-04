@@ -1,3 +1,4 @@
+import { Dispatch, UnknownAction } from "redux";
 import { signUp } from "../../../../api/auth";
 type TUserData = {
   name: string;
@@ -5,6 +6,7 @@ type TUserData = {
   password: string;
   confirmPassword: string;
   selectedRole: string;
+  
 };
 
 type Tdata = {

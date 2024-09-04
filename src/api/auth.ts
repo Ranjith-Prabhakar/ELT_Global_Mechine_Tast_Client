@@ -1,12 +1,14 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 type TSingin = {
   name?: string;
   email: string;
   password: string;
   selectedRole?: string;
 };
+
 export async function signUp({ name, email, password, selectedRole }: TSingin) {
   try {
     let result = await axios.post(`${BASE_URL}/signup`, {
@@ -18,7 +20,7 @@ export async function signUp({ name, email, password, selectedRole }: TSingin) {
     if (result.data.status === 201) {
       return true;
     }
-    console.log("result", result.data);
+    
   } catch (error: any) {
     if (error.response.data.status === 400) {
       toast.error(error.response.data.message);
@@ -32,10 +34,11 @@ export async function login({ email, password }: TSingin) {
       email,
       password,
     });
+    console.log("result", result.data.user);
     if (result.data.status === 200) {
-      return true;
+     
+      return result.data.user;
     }
-    console.log("result", result.data);
   } catch (error: any) {
     if (error.response.data.status === 400) {
       toast.error(error.response.data.message);

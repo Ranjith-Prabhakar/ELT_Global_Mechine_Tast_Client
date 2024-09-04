@@ -4,12 +4,15 @@ import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { validation } from "./utils/validation";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loadUser } from "../../../redux/features/user/userSlice";
 type Props = {};
 
 const Login = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <div className="w-[100vw] h-[100vh] flex items-center justify-center">
       <div className=" w-[400px] h-[80vh] flex  flex-col gap-3  rounded-md border">
@@ -43,9 +46,10 @@ const Login = (props: Props) => {
               onClick={async () => {
                 let result = await validation({ email, password });
                 console.log("response", result);
-                 if (result) {
-                   navigate("/profile");
-                 }
+                if (result) {
+                  dispatch(loadUser({ payload: result }));
+                  navigate("/profile");
+                }
               }}
             >
               {" "}

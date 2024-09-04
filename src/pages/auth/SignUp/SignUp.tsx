@@ -5,6 +5,7 @@ import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { validation } from "./util/validation";
+
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [selectedRole, setSelectedRole] = useState("user");
   const navigate = useNavigate();
+  
 
   const handleValueChange = (value:any) => {
     setSelectedRole(value);
@@ -92,7 +94,7 @@ const Signup = () => {
                   email,
                   password,
                   confirmPassword,
-                  selectedRole
+                  selectedRole,
                 });
                 if (result) {
                   navigate("/login");

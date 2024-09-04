@@ -1,3 +1,4 @@
+import { Dispatch, UnknownAction } from "redux";
 import { login } from "../../../../api/auth";
 type TUserData = {
   email: string;
