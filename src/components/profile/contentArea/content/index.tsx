@@ -1,4 +1,4 @@
-import DashBoard from "./dashboard/DashBoard";
+import DashBoard from "./dashboard";
 
 type Props = {};
 
