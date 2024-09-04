@@ -5,13 +5,15 @@ type TSingin = {
   name?: string;
   email: string;
   password: string;
+  selectedRole?: string;
 };
-export async function signUp({ name, email, password }: TSingin) {
+export async function signUp({ name, email, password, selectedRole }: TSingin) {
   try {
     let result = await axios.post(`${BASE_URL}/signup`, {
       name,
       email,
       password,
+      selectedRole,
     });
     if (result.data.status === 201) {
       return true;
