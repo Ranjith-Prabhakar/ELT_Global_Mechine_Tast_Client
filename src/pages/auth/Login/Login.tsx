@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
@@ -6,12 +6,21 @@ import { validation } from "./utils/validation";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loadUser } from "../../../redux/features/user/userSlice";
+import useGetUser from "@/hooks/useGetUser";
 type Props = {};
 
 const Login = (props: Props) => {
+  const user = useGetUser();
+  console.log("user Login", user);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user.name) {
+      navigate("/profile");
+    }
+  }, []);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
     <div className="w-[100vw] h-[100vh] flex items-center justify-center">

@@ -3,11 +3,18 @@ import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
 import { createEvent } from "../../../api/instructor";
 import { useState } from "react";
+import { logout } from "@/components/profile/sidebar/utils/logout";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../../../redux/features/user/userSlice";
 type Props = {};
 
 const InstructorProfile = (props: Props) => {
   const [courseName, setCourseName] = useState("");
   const [date, setDate] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <div className="w-[100vw] h-[100vh] flex items-center justify-center">
       <div className=" w-[400px] h-[80vh] flex  flex-col gap-3  rounded-md border">
@@ -51,6 +58,22 @@ const InstructorProfile = (props: Props) => {
             >
               {" "}
               Submit{" "}
+            </Button>
+          </div>
+
+          <div className="flex justify-center items-center">
+            {" "}
+            <Button
+              variant={"auth"}
+              onClick={() => {
+                logout();
+                dispatch(logoutUser());
+                toast.success("Logout successfully");
+                navigate("/login");
+              }}
+            >
+              {" "}
+              Logout{" "}
             </Button>
           </div>
         </div>

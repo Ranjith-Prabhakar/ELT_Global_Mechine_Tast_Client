@@ -1,8 +1,11 @@
+import { useUserMenuSelectContext } from "@/pages/user/profile/UserProfile";
 import { Link } from "react-router-dom";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const { head } = useUserMenuSelectContext();
+  console.log("head",head)
   return (
     <div className="w-[1128.5px] h-[130px] bg-[#FFFFFF]">
       <div className="h-[70px] p-[24px]">
@@ -42,8 +45,8 @@ const Navbar = (props: Props) => {
         </ul>
       </div>
       <div className="h-[60px] p-[24px] flex items-center">
-        <h1 className="w-[121px] h-[28px] text-[24px] font-[700] leading-[28px] text-[#1B1C1F]">
-          DashBoard
+        <h1 className="w-[121px] h-[28px] text-[24px] font-[700] leading-[28px] text-[#1B1C1F] whitespace-nowrap">
+         {head}
         </h1>
       </div>
     </div>

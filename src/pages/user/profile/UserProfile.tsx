@@ -1,13 +1,42 @@
 import ContentArea from "@/components/profile/contentArea";
 import ProfileBoardSideBar from "@/components/profile/sidebar";
-type Props = {};
+import { createContext, useContext, useEffect, useState } from "react";
+import data from "../../../assets/Profile/SideBar/data/student.js";
 
-const UserProfile = (props: Props) => {
- 
+type UserMenuSelectContextType = {
+  active: number;
+  setActive: React.Dispatch<React.SetStateAction<number>>;
+  head: string;
+};
+
+const UserMenuSelectContext = createContext<
+  UserMenuSelectContextType | undefined
+>(undefined);
+
+export const useUserMenuSelectContext = (): UserMenuSelectContextType => {
+  const context = useContext(UserMenuSelectContext);
+  if (context === undefined) {
+    throw new Error(
+      "useUserMenuSelectContext must be used within a UserMenuSelectContext.Provider"
+    );
+  }
+  return context;
+};
+
+const UserProfile = () => {
+  const [active, setActive] = useState(1);
+  const [head, setHead] = useState("DashBoard");
+
+  useEffect(() => {
+    setHead(data[active - 1].menuItem);
+  }, [active]);
+
   return (
     <div className="bg-ETLBackground max-h-auto max-w-[100vw] flex">
-      <ProfileBoardSideBar />
-      <ContentArea />
+      <UserMenuSelectContext.Provider value={{ active, setActive, head }}>
+        <ProfileBoardSideBar />
+        <ContentArea />
+      </UserMenuSelectContext.Provider>
     </div>
   );
 };
