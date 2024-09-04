@@ -20,7 +20,6 @@ export async function signUp({ name, email, password, selectedRole }: TSingin) {
     if (result.data.status === 201) {
       return true;
     }
-    
   } catch (error: any) {
     if (error.response.data.status === 400) {
       toast.error(error.response.data.message);
@@ -34,9 +33,11 @@ export async function login({ email, password }: TSingin) {
       email,
       password,
     });
-    console.log("result", result.data.user);
+    console.log("result******************", result.data.user);
+    console.log("result dataaaa******************", result.data);
     if (result.data.status === 200) {
-     
+      localStorage.setItem("ELTToken", JSON.stringify(result.data.token));
+      localStorage.setItem("ELTUser", JSON.stringify(result.data.user));
       return result.data.user;
     }
   } catch (error: any) {

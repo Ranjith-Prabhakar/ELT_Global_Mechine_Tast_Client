@@ -2,7 +2,7 @@ import { Button } from "../../../components/ui/button";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { validation } from "./util/validation";
 
@@ -13,9 +13,8 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [selectedRole, setSelectedRole] = useState("user");
   const navigate = useNavigate();
-  
 
-  const handleValueChange = (value:any) => {
+  const handleValueChange = (value: any) => {
     setSelectedRole(value);
     console.log("Selected role:", value); // This will log the selected value
   };
@@ -58,7 +57,7 @@ const Signup = () => {
           <div className="grid w-full max-w-sm items-center gap-1.5">
             <Label htmlFor="confirmPassword">Confirm Password</Label>
             <Input
-              type="confirmPassword"
+              type="password"
               id="confirmPassword"
               placeholder="Confirm Password"
               value={confirmPassword}
@@ -84,7 +83,7 @@ const Signup = () => {
             </div>
           </RadioGroup>
 
-          <div className="flex justify-center items-center">
+          <div className="flex flex-col gap-7 justify-center items-center">
             {" "}
             <Button
               variant={"auth"}
@@ -104,6 +103,7 @@ const Signup = () => {
               {" "}
               Submit{" "}
             </Button>
+            <Link to="/login">Already have an account ?</Link>
           </div>
         </div>
       </div>
