@@ -1,9 +1,8 @@
 import { useUserMenuSelectContext } from "@/pages/user/profile/UserProfile";
 import DashBoard from "./dashboard";
 
-type Props = {};
 
-const Content = (props: Props) => {
+const Content = () => {
   const { head } = useUserMenuSelectContext();
   return (
     <div className="w-[1128.5px] h-[950px] p-3">

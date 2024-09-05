@@ -7,9 +7,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loadUser } from "../../../redux/features/user/userSlice";
 import useGetUser from "@/hooks/useGetUser";
-type Props = {};
 
-const Login = (props: Props) => {
+const Login = () => {
   const user = useGetUser();
   const navigate = useNavigate();
   useEffect(() => {

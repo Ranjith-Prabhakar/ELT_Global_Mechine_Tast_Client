@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../../../../ui/table";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { formatEventDate } from "./utils/formatEventDate";
 import Modal from "./Modal";
 import {
@@ -19,11 +19,9 @@ import {
   useUserMenuSelectContext,
 } from "@/pages/user/profile/UserProfile";
 import localStorageForTotalPage from "../../../../../../utils/localStorageForTotalPage";
-import DynamicActionComponent from "./utils/DynamicActionComponent";
-import { Dispatch } from "redux";
 
 const TableComponent = () => {
-  const { events, setEvents, setTotal, total } = useUserMenuSelectContext();
+  const { events, setEvents, setTotal } = useUserMenuSelectContext();
   const [modal, setModal] = useState(false);
   const [userId, setUserId] = useState("");
   const state = useSelector((state: { user: TUser }) => state.user);

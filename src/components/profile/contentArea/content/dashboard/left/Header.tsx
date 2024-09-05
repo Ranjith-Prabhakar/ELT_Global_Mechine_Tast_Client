@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Checkbox } from "../../../../../ui/checkbox";
 import { fetchEvents } from "@/api/user";
 import { useUserMenuSelectContext } from "@/pages/user/profile/UserProfile";
 import localStorageForTotalPage from "@/utils/localStorageForTotalPage";
-type Props = {};
 
-const Header = (props: Props) => {
+const Header = () => {
   const { bookedOnly, setBookedOnly, setEvents, setTotal } =
     useUserMenuSelectContext();
   useEffect(() => {

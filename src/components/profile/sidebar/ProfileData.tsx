@@ -1,9 +1,8 @@
 import useGetUser from "@/hooks/useGetUser";
 import profileImage from "../../../assets/Profile/SideBar/images/profileImage.jpeg";
 import { useEffect, useState } from "react";
-type Props = {};
 
-const ProfileData = (props: Props) => {
+const ProfileData = () => {
   const [userName, setUserName] = useState("");
   const user = useGetUser();
 

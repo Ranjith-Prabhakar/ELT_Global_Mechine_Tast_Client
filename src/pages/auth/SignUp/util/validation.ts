@@ -9,15 +9,11 @@ type TUserData = {
   
 };
 
-type Tdata = {
-  message: string;
-  status: string;
-};
+
 export async function validation({
   name,
   email,
   password,
-  confirmPassword,
   selectedRole,
 }: TUserData) {
   try {

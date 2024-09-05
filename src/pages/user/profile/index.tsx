@@ -3,9 +3,8 @@ import useGetUser from "../../../hooks/useGetUser";
 import InstructorProfile from "./InstructorProfile";
 import UserProfile from "./UserProfile";
 
-type Props = {};
 
-const Profile = (props: Props) => {
+const Profile = () => {
   let user = useGetUser();
   
   return (

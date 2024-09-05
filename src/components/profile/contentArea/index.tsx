@@ -1,9 +1,8 @@
 import Navbar from './navbar';
 import Content from './content';
 
-type Props = {}
 
-const ContentArea = (props: Props) => {
+const ContentArea = () => {
   return (
     <div>
       <Navbar />

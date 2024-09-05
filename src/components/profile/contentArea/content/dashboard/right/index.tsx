@@ -1,10 +1,7 @@
-import React from "react";
 
-type Props = {};
-
-const RightPortion = (props: Props) => {
+const RightPortion = () => {
   return (
-    <div className="w-[480px] h-[823px] rounded-[12px] p-[18px] bg-[#fff] flex flex-col gap-3">
+    <div className="w-[480px] h-[823px] rounded-[12px] p-[18px] bg-[#fff] hidden 400px:flex flex-col gap-3 ">
       <div className="w-full">
         <h2 className="text-[18px] font-[600] leading-[21.48px] text-[#313336]">
           Assignments <span className="text-[#737475]">(4)</span>

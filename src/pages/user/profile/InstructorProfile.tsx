@@ -8,9 +8,8 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../../redux/features/user/userSlice";
-type Props = {};
 
-const InstructorProfile = (props: Props) => {
+const InstructorProfile = () => {
   const [courseName, setCourseName] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
