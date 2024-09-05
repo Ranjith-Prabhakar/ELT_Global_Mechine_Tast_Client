@@ -1,4 +1,3 @@
-import { useUserMenuSelectContext } from "@/pages/user/profile/UserProfile";
 import axios from "./axiosInterceptor";
 
 type TEvents = {

@@ -46,6 +46,7 @@ export type TEvents = [
     };
     updatedAt?: string;
     _id?: string;
+    time?: string;
   },
 ];
 

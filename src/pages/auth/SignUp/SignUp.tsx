@@ -19,8 +19,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="w-[100vw] h-[100vh] flex items-center justify-center">
-      <div className=" w-[400px] h-[80vh] flex  flex-col gap-3  rounded-md border">
+    <div className="w-[100vw] h-[100vh] flex items-center justify-center bg-ETLBackground ">
+      <div className="w-[400px] h-[80vh] flex  flex-col gap-3 justify-center border bg-white shadow-md rounded-lg">
         <h2 className="text-center font-bold text-[20px] ">Sign Up</h2>
         <div className="flex flex-col w-full p-[20px] gap-[10px]">
           <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -86,6 +86,7 @@ const Signup = () => {
             {" "}
             <Button
               variant={"auth"}
+              className="w-full"
               onClick={async () => {
                 let result = await validation({
                   name,

@@ -13,11 +13,12 @@ type Props = {};
 const InstructorProfile = (props: Props) => {
   const [courseName, setCourseName] = useState("");
   const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
-    <div className="w-[100vw] h-[100vh] flex items-center justify-center">
-      <div className=" w-[400px] h-[80vh] flex  flex-col gap-3  rounded-md border">
+    <div className="w-[100vw] h-[100vh] flex items-center justify-center bg-ETLBackground ">
+      <div className="w-[400px] h-[80vh] flex  flex-col gap-3 justify-center border bg-white shadow-md rounded-lg">
         <h2 className="text-center font-bold text-[20px] ">
           Schedule an event
         </h2>
@@ -43,12 +44,24 @@ const InstructorProfile = (props: Props) => {
             />
           </div>
 
+          <div className="grid w-full max-w-sm items-center gap-1.5">
+            <Label htmlFor="email">Time</Label>
+            <Input
+              type="time"
+              id="time"
+              placeholder="Time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+            />
+          </div>
+
           <div className="flex justify-center items-center">
             {" "}
             <Button
               variant={"auth"}
+              className="w-full"
               onClick={async () => {
-                let result = await createEvent({ courseName, date });
+                let result = await createEvent({ courseName, date, time });
                 if (result) {
                   setCourseName("");
                   setDate("");
@@ -64,6 +77,7 @@ const InstructorProfile = (props: Props) => {
             {" "}
             <Button
               variant={"auth"}
+              className="w-full"
               onClick={() => {
                 logout();
                 dispatch(logoutUser());
