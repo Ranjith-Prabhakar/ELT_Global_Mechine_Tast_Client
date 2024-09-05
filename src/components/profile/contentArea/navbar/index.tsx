@@ -42,7 +42,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="h-[45px]  400px:w-full 400px:h-[60px] 400px:p-[24px] flex items-center bg-red-500">
+      <div className="h-[45px]  400px:w-full 400px:h-[60px] 400px:p-[24px] flex items-center">
         <h1 className="w-[121px] h-[28px] text-[24px] font-[700] leading-[28px] text-[#1B1C1F] whitespace-nowrap">
           {head}
         </h1>
