@@ -42,7 +42,7 @@ const TableComponent = () => {
   return (
     <>
       {events ? (
-        <Table className="bg-[#fff]">
+        <Table className="bg-[#fff] ">
           <TableHeader>
             <TableRow className="bg-[#F6F6F6] border-b-0">
               <TableHead className="w-[208px] h-[40px] px-[24px] ">
@@ -64,8 +64,11 @@ const TableComponent = () => {
           </TableHeader>
           <TableBody>
             {events.map((events, index) => (
-              <TableRow key={events.instructor?.name + "" + index}>
-                <TableCell className="w-[208px] h-[70px] border-b-[1px] border-t-0 border-[#E2E2E2] ps-[24px]">
+              <TableRow
+                key={events.instructor?.name + "" + index}
+                className="overflow-x-hidden"
+              >
+                <TableCell className="w-[208px] h-[70px] border-t-0 border-[#E2E2E2] ps-[24px]">
                   <div className="flex items-center gap-3 w-full ">
                     <div className="">
                       <p className="font-[500] text-[14px] inter leading-[20px] text-center text-[#A1A0A3]">
@@ -127,10 +130,6 @@ const TableComponent = () => {
                       </h5>
                     </Button>
                   )}
-
-                  
-                  
-                  
                 </TableCell>
               </TableRow>
             ))}

@@ -55,6 +55,7 @@ const Login = (props: Props) => {
               onClick={async () => {
                 let result = await validation({ email, password });
                 if (result) {
+                  console.log("result", result);
                   dispatch(loadUser({ payload: result }));
                   navigate("/profile");
                 }

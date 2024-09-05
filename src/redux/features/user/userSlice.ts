@@ -5,7 +5,7 @@ export type TUser = {
   email: string;
   selectedRole: string;
   _id: string;
-  bookedEvents?: string[]; 
+  bookedEvents?: string[];
 };
 
 const initialState: TUser = {
@@ -13,7 +13,7 @@ const initialState: TUser = {
   email: "",
   selectedRole: "",
   _id: "",
-  bookedEvents: [], 
+  bookedEvents: [],
 };
 
 const userSlice = createSlice({
@@ -22,19 +22,22 @@ const userSlice = createSlice({
   reducers: {
     loadUser: (state, action) => {
       const { _id, name, email, selectedRole, bookedEvents } =
-        action.payload.payload; 
+        action.payload.payload;
+      console.log("loaduser+++++111", action.payload);
+      console.log("loaduser+++++", action.payload.payload);
       state._id = _id;
       state.name = name;
       state.email = email;
       state.selectedRole = selectedRole;
-      state.bookedEvents = bookedEvents ?? []; 
+      state.bookedEvents = bookedEvents;
     },
     logoutUser: (state) => {
+      console.log("inside logoutUser")
       state._id = "";
       state.name = "";
       state.email = "";
       state.selectedRole = "";
-      state.bookedEvents = []; 
+      state.bookedEvents = [];
     },
   },
 });

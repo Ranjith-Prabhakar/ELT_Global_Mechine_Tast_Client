@@ -6,8 +6,8 @@ type Props = {};
 
 const LeftPortion = (props: Props) => {
   return (
-    <div className="w-[642px] h-full flex flex-col  gap-[20px]">
-      <div className="h-[823px] w-[606px] p-[18px] bg-[#FFFFFF] rounded-[12px] border-[.5px] border-[#0000000D] border-opacity-10 shadow-custom">
+    <div className="w-[670px] h-full flex flex-col  gap-[20px]   ">
+      <div className="h-[823px] w-[630px] p-[18px] bg-[#FFFFFF] rounded-[12px] border-[.5px] border-[#0000000D] border-opacity-10 shadow-custom">
         <div className="w-full flex flex-col gap-4 ">
           <Header />
           <TableComponent />

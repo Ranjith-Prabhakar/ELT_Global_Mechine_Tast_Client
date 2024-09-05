@@ -6,7 +6,7 @@ type Props = {};
 
 const DashBoard = (props: Props) => {
   return (
-    <div className="flex gap-3 h-full">
+    <div className="flex h-full">
       <LeftPortion />
       <RightPortion />
     </div>

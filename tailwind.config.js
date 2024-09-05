@@ -62,6 +62,17 @@ export default {
 			boxShadow: {
 				'custom': '0px 1px 4px 0px #F3F3F3',
 			},
+			 screens: {
+        "1300px": "1300px",
+        "1200px": "1200px",
+        "1100px": "1110px",
+        "1000px": "1000px",
+        "800px": "800px",
+        "500px": "500px",
+        "400px": "400px",
+        "300px": "300px"
+
+      },
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
