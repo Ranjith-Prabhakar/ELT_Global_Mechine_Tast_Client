@@ -5,7 +5,7 @@ export type TUser = {
   email: string;
   selectedRole: string;
   _id: string;
-  bookedEvents?: string[]; // Ensure this is correctly typed as an array of strings
+  bookedEvents?: string[]; 
 };
 
 const initialState: TUser = {
@@ -13,7 +13,7 @@ const initialState: TUser = {
   email: "",
   selectedRole: "",
   _id: "",
-  bookedEvents: [], // Initialize as an empty array
+  bookedEvents: [], 
 };
 
 const userSlice = createSlice({
@@ -21,30 +21,20 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     loadUser: (state, action) => {
-      console.log("Action payload:", action.payload);
       const { _id, name, email, selectedRole, bookedEvents } =
-        action.payload.payload; // Access payload directly
-      console.log(
-        "Loaded user data:",
-        _id,
-        name,
-        email,
-        selectedRole,
-        bookedEvents
-      );
-
+        action.payload.payload; 
       state._id = _id;
       state.name = name;
       state.email = email;
       state.selectedRole = selectedRole;
-      state.bookedEvents = bookedEvents ?? []; // Assign an empty array if bookedEvents is undefined
+      state.bookedEvents = bookedEvents ?? []; 
     },
     logoutUser: (state) => {
       state._id = "";
       state.name = "";
       state.email = "";
       state.selectedRole = "";
-      state.bookedEvents = []; // Clear booked events on logout
+      state.bookedEvents = []; 
     },
   },
 });

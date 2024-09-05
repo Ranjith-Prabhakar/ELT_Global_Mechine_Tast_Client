@@ -10,7 +10,6 @@ export async function validation({
   password,
 }: TUserData) {
   try {
-    console.log(name, email, password);
     let response = await login({ email, password });
     return response;
   } catch (error) {

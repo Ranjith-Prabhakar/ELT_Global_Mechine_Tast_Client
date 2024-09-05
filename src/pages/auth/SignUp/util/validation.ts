@@ -21,9 +21,7 @@ export async function validation({
   selectedRole,
 }: TUserData) {
   try {
-    console.log(name, email, password, confirmPassword, selectedRole);
     let response = await signUp({ name, email, password, selectedRole });
-    console.log("--- validation", response);
     return response;
   } catch (error) {
     console.log(error);

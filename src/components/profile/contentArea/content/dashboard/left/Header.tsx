@@ -2,29 +2,25 @@ import { useEffect, useState } from "react";
 import { Checkbox } from "../../../../../ui/checkbox";
 import { fetchEvents } from "@/api/user";
 import { useUserMenuSelectContext } from "@/pages/user/profile/UserProfile";
+import localStorageForTotalPage from "@/utils/localStorageForTotalPage";
 type Props = {};
 
 const Header = (props: Props) => {
-  const { bookedOnly, setBookedOnly, rowCount, pageCount, total, setEvents } =
+  const { bookedOnly, setBookedOnly, setEvents, setTotal } =
     useUserMenuSelectContext();
   useEffect(() => {
-    console.log("bookedOnly", bookedOnly);
-    async function fetchEventsApi(bookedOnlyEventsCount = 0) {
+    async function fetchEventsApi() {
       let response = await fetchEvents({
-        rowCount:10,
-        pageCount:1,
-        total:0,
-        bookedOnlyEvents: bookedOnlyEventsCount,
+        rowCount: 10,
+        pageCount: 1,
+        total: 0,
+        bookedOnly,
       });
-      console.log("response", response);
+         let total = localStorageForTotalPage();
+         setTotal(total);
       setEvents(response);
     }
-
-    if (bookedOnly) {
-      fetchEventsApi(1);
-    } else if (!bookedOnly) {
-      fetchEventsApi();
-    }
+    fetchEventsApi();
   }, [bookedOnly]);
   return (
     <div className="w-full flex justify-between h-[37px]">

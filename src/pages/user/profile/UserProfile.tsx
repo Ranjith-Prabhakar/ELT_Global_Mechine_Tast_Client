@@ -42,7 +42,7 @@ export type TEvents = [
       email: string;
       name: string;
       selectedRole?: string;
-      _id : string;
+      _id?: string;
     };
     updatedAt?: string;
     _id?: string;

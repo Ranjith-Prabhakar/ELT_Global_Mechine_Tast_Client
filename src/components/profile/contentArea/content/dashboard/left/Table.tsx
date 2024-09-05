@@ -18,22 +18,27 @@ import {
   TEvents,
   useUserMenuSelectContext,
 } from "@/pages/user/profile/UserProfile";
+import localStorageForTotalPage from '../../../../../../utils/localStorageForTotalPage';
 
 const TableComponent = () => {
-  const { events, setEvents } = useUserMenuSelectContext();
+  const { events, setEvents, setTotal, total } = useUserMenuSelectContext();
   const [modal, setModal] = useState(false);
   const [userId, setUserId] = useState("");
   const state = useSelector((state: { user: TUser }) => state.user);
-  console.log("state", state);
   useEffect(() => {
     async function fetchCall() {
       let fetch = (await fetchEvents({})) as unknown as TEvents;
+      let total = localStorageForTotalPage();
+      setTotal(total);
       setEvents(fetch);
     }
 
     fetchCall();
   }, []);
 
+  useEffect(() => {
+    console.log("=======tottt", total);
+  }, [total]);
   return (
     <>
       {events ? (

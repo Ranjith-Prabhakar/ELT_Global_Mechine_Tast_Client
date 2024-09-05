@@ -1,25 +1,28 @@
+import { useUserMenuSelectContext } from "@/pages/user/profile/UserProfile";
 import axios from "./axiosInterceptor";
 
 type TEvents = {
   rowCount?: number;
   pageCount?: number;
   total?: number;
-  bookedOnlyEvents?: number;
+  bookedOnly?: boolean;
 };
 
 export const fetchEvents = async function ({
   rowCount = 10,
   pageCount = 1,
   total = 0,
-  bookedOnlyEvents = 0,
+  bookedOnly = false,
 }: TEvents) {
   try {
     let response = await axios.post("/fetchEvents", {
       rowCount,
       pageCount,
       total,
-      bookedOnlyEvents,
+      bookedOnly,
     });
+    console.log("response /fetchEventss", response);
+    localStorage.setItem("totalPage", JSON.stringify(response.data.total));
     return response.data.data;
   } catch (error: any) {
     console.log(error.message);

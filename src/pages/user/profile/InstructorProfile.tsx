@@ -48,7 +48,6 @@ const InstructorProfile = (props: Props) => {
             <Button
               variant={"auth"}
               onClick={async () => {
-                console.log("courseName, date", courseName, date);
                 let result = await createEvent({ courseName, date });
                 if (result) {
                   setCourseName("");

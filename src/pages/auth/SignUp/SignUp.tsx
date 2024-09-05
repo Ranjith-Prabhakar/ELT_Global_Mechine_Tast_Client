@@ -16,7 +16,6 @@ const Signup = () => {
 
   const handleValueChange = (value: any) => {
     setSelectedRole(value);
-    console.log("Selected role:", value); // This will log the selected value
   };
 
   return (
