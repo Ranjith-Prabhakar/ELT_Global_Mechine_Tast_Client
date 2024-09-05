@@ -1,7 +1,7 @@
 import profImage from "../../../../../../assets/Profile/SideBar/images/profileImage.jpeg";
 import { Button } from "../../../../../ui/button";
 import { fetchEvents } from "@/api/user";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { TUser } from "@/redux/features/user/userSlice";
 import {
   Table,
@@ -14,27 +14,15 @@ import {
 import { useEffect, useState } from "react";
 import { formatEventDate } from "./utils/formatEventDate";
 import Modal from "./Modal";
+import {
+  TEvents,
+  useUserMenuSelectContext,
+} from "@/pages/user/profile/UserProfile";
 
-type TEvents = [
-  {
-    courseName?: string;
-    createdAt?: string;
-    date?: string;
-    instructor?: {
-      email: string;
-      name: string;
-      selectedRole: string;
-      _id: string;
-    };
-    updatedAt?: string;
-    _id?: string;
-  },
-];
 const TableComponent = () => {
-  const [events, setEvents] = useState<TEvents>();
+  const { events, setEvents } = useUserMenuSelectContext();
   const [modal, setModal] = useState(false);
-  const [userId,setUserId]= useState("");
-  const dispatch = useDispatch();
+  const [userId, setUserId] = useState("");
   const state = useSelector((state: { user: TUser }) => state.user);
   console.log("state", state);
   useEffect(() => {
@@ -120,17 +108,8 @@ const TableComponent = () => {
                     <Button
                       onClick={() => {
                         setUserId(events._id as string);
-                        setModal(!modal)
+                        setModal(!modal);
                       }}
-                      // onClick={async () => {
-                      //   let response = await addBookedEvents(
-                      //     events._id as string
-                      //   );
-                      //   if (response?.data.status === 201) {
-                      //     toast.success(response.data.message);
-                      //     dispatch(loadUser({ payload: response.data.data }));
-                      //   }
-                      // }}
                     >
                       <h5 className="inter font-[600px] text-[14px] leading-[20px] text-[#222124]">
                         Book now
@@ -147,7 +126,7 @@ const TableComponent = () => {
               </TableRow>
             ))}
           </TableBody>
-          {modal && <Modal setModal={setModal} userId={userId}/>}
+          {modal && <Modal setModal={setModal} userId={userId} />}
         </Table>
       ) : (
         <div>Loading....</div>

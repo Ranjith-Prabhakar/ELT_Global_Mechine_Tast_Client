@@ -7,6 +7,16 @@ type UserMenuSelectContextType = {
   active: number;
   setActive: React.Dispatch<React.SetStateAction<number>>;
   head: string;
+  pageCount: number;
+  setPageCount: React.Dispatch<React.SetStateAction<number>>;
+  rowCount: number;
+  setRowCount: React.Dispatch<React.SetStateAction<number>>;
+  total: number;
+  setTotal: React.Dispatch<React.SetStateAction<number>>;
+  bookedOnly: boolean;
+  setBookedOnly: React.Dispatch<React.SetStateAction<boolean>>;
+  events: TEvents | undefined;
+  setEvents: React.Dispatch<React.SetStateAction<TEvents | undefined>>;
 };
 
 const UserMenuSelectContext = createContext<
@@ -23,9 +33,30 @@ export const useUserMenuSelectContext = (): UserMenuSelectContextType => {
   return context;
 };
 
+export type TEvents = [
+  {
+    courseName?: string;
+    createdAt?: string;
+    date?: string;
+    instructor?: {
+      email: string;
+      name: string;
+      selectedRole?: string;
+      _id : string;
+    };
+    updatedAt?: string;
+    _id?: string;
+  },
+];
+
 const UserProfile = () => {
   const [active, setActive] = useState(1);
   const [head, setHead] = useState("DashBoard");
+  const [pageCount, setPageCount] = useState(1);
+  const [rowCount, setRowCount] = useState(10);
+  const [total, setTotal] = useState(0);
+  const [bookedOnly, setBookedOnly] = useState(false);
+  const [events, setEvents] = useState<TEvents>();
 
   useEffect(() => {
     setHead(data[active - 1].menuItem);
@@ -33,7 +64,23 @@ const UserProfile = () => {
 
   return (
     <div className="bg-ETLBackground max-h-auto max-w-[100vw] flex">
-      <UserMenuSelectContext.Provider value={{ active, setActive, head }}>
+      <UserMenuSelectContext.Provider
+        value={{
+          active,
+          setActive,
+          head,
+          pageCount,
+          setPageCount,
+          rowCount,
+          setRowCount,
+          total,
+          setTotal,
+          bookedOnly,
+          setBookedOnly,
+          events,
+          setEvents,
+        }}
+      >
         <ProfileBoardSideBar />
         <ContentArea />
       </UserMenuSelectContext.Provider>

@@ -1,7 +1,31 @@
+import { useEffect, useState } from "react";
 import { Checkbox } from "../../../../../ui/checkbox";
+import { fetchEvents } from "@/api/user";
+import { useUserMenuSelectContext } from "@/pages/user/profile/UserProfile";
 type Props = {};
 
 const Header = (props: Props) => {
+  const { bookedOnly, setBookedOnly, rowCount, pageCount, total, setEvents } =
+    useUserMenuSelectContext();
+  useEffect(() => {
+    console.log("bookedOnly", bookedOnly);
+    async function fetchEventsApi(bookedOnlyEventsCount = 0) {
+      let response = await fetchEvents({
+        rowCount:10,
+        pageCount:1,
+        total:0,
+        bookedOnlyEvents: bookedOnlyEventsCount,
+      });
+      console.log("response", response);
+      setEvents(response);
+    }
+
+    if (bookedOnly) {
+      fetchEventsApi(1);
+    } else if (!bookedOnly) {
+      fetchEventsApi();
+    }
+  }, [bookedOnly]);
   return (
     <div className="w-full flex justify-between h-[37px]">
       <div className="w-[235px] h-[37px] flex flex-col ">
@@ -25,6 +49,9 @@ const Header = (props: Props) => {
           <Checkbox
             id="bookedOnly"
             className="border-[#E6E6E6] w-[20px] h-[20px] rounded-[5px] border-[1.5px]"
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+              setBookedOnly(!bookedOnly);
+            }}
           />
         </div>
       </div>
