@@ -6,8 +6,9 @@ import { logoutUser } from "../../../redux/features/user/userSlice";
 import { useDispatch } from "react-redux";
 
 type Props = {
-  data: [{ icon: string; menuItem: string }];
+  data: { icon: string; menuItem: string }[];
 };
+
 
 const Menu = ({ data }: Props) => {
   const { active, setActive } = useUserMenuSelectContext();

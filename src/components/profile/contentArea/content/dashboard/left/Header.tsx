@@ -44,7 +44,7 @@ const Header = () => {
           <Checkbox
             id="bookedOnly"
             className="border-[#E6E6E6] w-[20px] h-[20px] rounded-[5px] border-[1.5px]"
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+            onClick={() => {
               setBookedOnly(!bookedOnly);
             }}
           />

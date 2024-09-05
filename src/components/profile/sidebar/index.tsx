@@ -1,7 +1,7 @@
 import Menu from "./Menu.js";
 import Logo from "./Logo.js";
 import ProfileData from "./ProfileData.js";
-import data from "../../../assets/Profile/SideBar/data/student.js";
+import data from "../../../assets/Profile/SideBar/data/student";
 
 const ProfileBoardSideBar = () => {
   return (

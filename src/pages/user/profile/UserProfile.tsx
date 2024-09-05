@@ -1,7 +1,7 @@
 import ContentArea from "@/components/profile/contentArea";
 import ProfileBoardSideBar from "@/components/profile/sidebar";
 import { createContext, useContext, useEffect, useState } from "react";
-import data from "../../../assets/Profile/SideBar/data/student.js";
+import data from "../../../assets/Profile/SideBar/data/student";
 import { useSelector } from "react-redux";
 import { TUser } from "@/redux/features/user/userSlice.js";
 import useLocalStorageForUser from "@/hooks/useLocalStorageForUser.js";

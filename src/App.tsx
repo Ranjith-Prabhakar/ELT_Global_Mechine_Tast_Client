@@ -5,9 +5,8 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import store from "./redux/store";
 import { Provider } from "react-redux";
-type Props = {};
 
-const App = (props: Props) => {
+const App = () => {
   return (
     <div>
       <Provider store={store}>

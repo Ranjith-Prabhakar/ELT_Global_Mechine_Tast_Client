@@ -1,4 +1,3 @@
-import { Dispatch, UnknownAction } from "redux";
 import { signUp } from "../../../../api/auth";
 type TUserData = {
   name: string;
