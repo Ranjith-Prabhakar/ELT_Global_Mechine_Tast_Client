@@ -36,7 +36,6 @@ const TableComponent = () => {
     fetchCall();
   }, []);
 
-  console.log("tableeeee", events);
   return (
     <>
       {events ? (
@@ -135,7 +134,9 @@ const TableComponent = () => {
           {modal && <Modal setModal={setModal} userId={userId} />}
         </Table>
       ) : (
-        <div>Loading....</div>
+        <div className="flex items-center justify-center w-[80%] h-[80%]">
+          <progress className="progress w-56"></progress>
+        </div>
       )}
     </>
   );

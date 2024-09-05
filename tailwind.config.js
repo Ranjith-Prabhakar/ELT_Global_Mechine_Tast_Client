@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import daisyui from "daisyui"
 export default {
 	darkMode: ["class"],
 	content: [
@@ -53,7 +54,7 @@ export default {
 					'4': 'hsl(var(--chart-4))',
 					'5': 'hsl(var(--chart-5))'
 				}
-				, ETLBackground: "#F6F6F7" 
+				, ETLBackground: "#F6F6F7"
 			},
 			fontFamily: {
 				baloo: ['"Baloo 2"', 'cursive'],
@@ -62,18 +63,18 @@ export default {
 			boxShadow: {
 				'custom': '0px 1px 4px 0px #F3F3F3',
 			},
-			 screens: {
-        "1300px": "1300px",
-        "1200px": "1200px",
-        "1100px": "1110px",
-        "1000px": "1000px",
-        "800px": "800px",
-        "500px": "500px",
-        "400px": "412px",
-        "300px": "300px"
+			screens: {
+				"1300px": "1300px",
+				"1200px": "1200px",
+				"1100px": "1110px",
+				"1000px": "1000px",
+				"800px": "800px",
+				"500px": "500px",
+				"400px": "412px",
+				"300px": "300px"
 
-      },
+			},
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate"), daisyui],
 }

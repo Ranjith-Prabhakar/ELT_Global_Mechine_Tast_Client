@@ -2,10 +2,7 @@ import ContentArea from "@/components/profile/contentArea";
 import ProfileBoardSideBar from "@/components/profile/sidebar";
 import { createContext, useContext, useEffect, useState } from "react";
 import data from "../../../assets/Profile/SideBar/data/student";
-import { useSelector } from "react-redux";
-import { TUser } from "@/redux/features/user/userSlice.js";
 import useLocalStorageForUser from "@/hooks/useLocalStorageForUser.js";
-
 type UserMenuSelectContextType = {
   active: number;
   setActive: React.Dispatch<React.SetStateAction<number>>;
@@ -62,15 +59,12 @@ const UserProfile = () => {
   const [total, setTotal] = useState(0);
   const [bookedOnly, setBookedOnly] = useState(false);
   const [events, setEvents] = useState<TEvents>();
-  const state = useSelector((state: { user: TUser }) => state);
 
   useEffect(() => {
     setHead(data[active - 1].menuItem);
   }, [active]);
 
-  useEffect(() => {
-    console.log("state", state);
-  }, [state]);
+  
   return (
     <div className="bg-ETLBackground max-h-auto max-w-[100vw] flex">
       <UserMenuSelectContext.Provider

@@ -20,7 +20,6 @@ export const fetchEvents = async function ({
       total,
       bookedOnly,
     });
-    console.log("response /fetchEventss", response);
     localStorage.setItem("totalPage", JSON.stringify(response.data.total));
     return response.data.data;
   } catch (error: any) {

@@ -21,10 +21,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     loadUser: (state, action) => {
-      const { _id, name, email, selectedRole, bookedEvents } =
-        action.payload.payload;
-      console.log("loaduser+++++111", action.payload);
-      console.log("loaduser+++++", action.payload.payload);
+      const { _id, name, email, selectedRole, bookedEvents } =action.payload.payload;
       state._id = _id;
       state.name = name;
       state.email = email;
@@ -32,7 +29,6 @@ const userSlice = createSlice({
       state.bookedEvents = bookedEvents;
     },
     logoutUser: (state) => {
-      console.log("inside logoutUser")
       state._id = "";
       state.name = "";
       state.email = "";
