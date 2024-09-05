@@ -5,6 +5,7 @@ import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { validation } from "./util/validation";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -96,6 +97,7 @@ const Signup = () => {
                   selectedRole,
                 });
                 if (result) {
+                  toast.success("Signed up successfully");
                   navigate("/login");
                 }
               }}
