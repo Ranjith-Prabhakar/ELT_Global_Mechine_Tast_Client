@@ -4,7 +4,7 @@ import RightPortion from "./right";
 
 const DashBoard = () => {
   return (
-    <div className="flex h-full">
+    <div className="flex h-full ">
       <LeftPortion />
       <RightPortion />
     </div>

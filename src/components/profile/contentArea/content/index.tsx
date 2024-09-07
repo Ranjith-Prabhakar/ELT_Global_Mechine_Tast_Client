@@ -5,7 +5,7 @@ import DashBoard from "./dashboard";
 const Content = () => {
   const { head } = useUserMenuSelectContext();
   return (
-    <div className="w-[1128.5px] h-[950px] p-3">
+    <div className="w-[1128.5px] h-[950px] p-3 ">
       {head === "Dash Board" ? (
         <DashBoard />
       ) : (
